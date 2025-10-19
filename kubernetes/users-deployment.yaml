@@ -14,5 +14,9 @@ spec:
     spec: 
       containers:
         - name: users
-          image: xebec19/users-api
-          
+          image: xebec19/users-api:latest
+          env:
+            - name: AUTH_ADDRESS
+              value: localhost
+        - name: auth
+          image: xebec19/auth-api:latest
