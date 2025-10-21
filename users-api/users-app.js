@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const AUTH_URL = `http://${process.env.AUTH_URL}`;
+const AUTH_URL = `http://${process.env.AUTH_SERVICE_SERVICE_HOST}`;
 
 app.post("/signup", async (req, res) => {
   // It's just a dummy service - we don't really care for the email
