@@ -14,7 +14,7 @@ spec:
     spec: 
       containers:
         - name: users
-          image: xebec19/tasks-api:latest
+          image: xebec19/tasks-api:0.1
           env:
             - name: AUTH_ADDRESS
               value: auth-service.default

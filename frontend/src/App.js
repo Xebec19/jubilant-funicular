@@ -1,17 +1,21 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 
-import './App.css';
-import TaskList from './components/TaskList';
-import NewTask from './components/NewTask';
+import "./App.css";
+import TaskList from "./components/TaskList";
+import NewTask from "./components/NewTask";
+
+const TASKS_URL = "http://" + process.env.TASKS_ADDRESS;
+
+console.log({ TASKS_URL });
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = useCallback(function () {
-    fetch('http://192.168.99.100:32140/tasks', {
+    fetch(TASKS_URL + "/tasks", {
       headers: {
-        'Authorization': 'Bearer abc'
-      }
+        Authorization: "Bearer abc",
+      },
     })
       .then(function (response) {
         return response.json();
@@ -29,11 +33,11 @@ function App() {
   );
 
   function addTaskHandler(task) {
-    fetch('http://192.168.99.100:32140/tasks', {
-      method: 'POST',
+    fetch(TASKS_URL + "/tasks", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer abc',
+        "Content-Type": "application/json",
+        Authorization: "Bearer abc",
       },
       body: JSON.stringify(task),
     })
@@ -47,7 +51,7 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div className="App">
       <section>
         <NewTask onAddTask={addTaskHandler} />
       </section>
